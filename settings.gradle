@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Workout Planer"
 include ':app'
+
