@@ -92,7 +92,7 @@
         android:layout_width="266dp"
         android:layout_height="213dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="@string/workout_planner"
+        android:text="@string/app_name"
         android:textColor="#009688"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
