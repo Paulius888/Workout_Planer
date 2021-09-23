@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "525882610062",
+    "firebase_url": "https://workoutapp-dc337-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "workoutapp-dc337",
     "storage_bucket": "workoutapp-dc337.appspot.com"
   },
