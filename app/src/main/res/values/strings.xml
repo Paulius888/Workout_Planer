@@ -5,4 +5,10 @@
     <string name="login">LOGIN</string>
     <string name="register">REGISTER</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="username"><b>Username</b></string>
+    <string name="cnfrmEmail"><b>Confirm email</b></string>
+    <string name="email_register"><b>Email</b></string>
+    <string name="password_register"><b>Password</b></string>
+    <string name="cnfrmPassword"><b>Confirm password</b></string>
+    <string name="create_account"><b>Create account</b></string>
 </resources>
