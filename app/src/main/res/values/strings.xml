@@ -5,4 +5,9 @@
     <string name="login">LOGIN</string>
     <string name="register">REGISTER</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="workouts">Workouts</string>
+    <string name="logout">Logout</string>
+    <string name="faq">FAQ</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
 </resources>
