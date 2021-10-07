@@ -60,7 +60,6 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     public void runRegisterPage (boolean flag)
     {
         Intent intent = new Intent(context, RegisterActivity.class);
-        intent.putExtra("flag", flag);
         context.startActivity(intent);
     }
 }
