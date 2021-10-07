@@ -121,7 +121,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void redirectToRegister() {
-//        Intent intent = new Intent(this, RegisterActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
+
+    
 }

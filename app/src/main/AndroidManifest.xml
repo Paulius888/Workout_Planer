@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutPlaner">
         <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
+            android:exported="true" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="true" />
         <activity
