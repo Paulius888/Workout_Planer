@@ -34,9 +34,9 @@ public class DAOWorkout {
     public Query get(String key)
     {
         if(key == null){
-            return databaseReference.orderByKey().limitToFirst(4); // hardcode sutvarkyt
+            return databaseReference.orderByKey();
         }
-        return databaseReference.orderByKey().startAfter(key).limitToFirst(4);
+        return databaseReference.orderByKey().startAfter(key);
     }
 
     public Query get()

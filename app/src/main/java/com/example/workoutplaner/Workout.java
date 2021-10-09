@@ -2,7 +2,9 @@ package com.example.workoutplaner;
 
 import com.google.firebase.database.Exclude;
 
-public class Workout {
+import java.io.Serializable;
+
+public class Workout implements Serializable {
 
     @Exclude
     private String key;

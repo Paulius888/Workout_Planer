@@ -41,9 +41,17 @@ public class RVWorkoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, Workout w) {
         WorkoutVH vh = (WorkoutVH) holder;
-        Workout workout = list.get(position);
+        Workout workout = w==null? list.get(position):w;
         vh.txt_name.setText(workout.getName());
         vh.txt_position.setText(workout.getPosition());
+        vh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RVWorkoutDays.class);
+                intent.putExtra("name", workout.getName());
+                context.startActivity(intent);
+            }
+        });
         vh.txt_option.setOnClickListener(v->
         {
             PopupMenu popupMenu = new PopupMenu(context, vh.txt_option);
@@ -54,7 +62,7 @@ public class RVWorkoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 {
                     case R.id.menu_edit:
                         Intent intent = new Intent(context, WorkoutPageActivity.class);
-                        intent.putExtra("EDIT", String.valueOf(workout)); // cia yra klaida kazkoke
+                        intent.putExtra("EDIT", workout);
                         context.startActivity(intent);
                         break;
                     case R.id.menu_remove:
@@ -63,6 +71,7 @@ public class RVWorkoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         {
                             Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
                             notifyItemRemoved(position);
+                            list.remove(workout);
                         }).addOnFailureListener(er ->
                        {
                             Toast.makeText(context, ""+er.getMessage(), Toast.LENGTH_SHORT).show();

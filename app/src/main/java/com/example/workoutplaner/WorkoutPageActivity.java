@@ -32,7 +32,7 @@ public class WorkoutPageActivity extends AppCompatActivity {
             btn.setText("UPDATE");
             edit_name.setText(workout_edit.getName());
             edit_position.setText(workout_edit.getPosition());
-            btn_open.setVisibility(View.GONE);
+            btn_open.setVisibility(View.VISIBLE);
         }
         else
         {
@@ -58,7 +58,7 @@ public class WorkoutPageActivity extends AppCompatActivity {
                    dao.update(workout_edit.getKey(),hashMap).addOnSuccessListener(suc ->
                    {
                       Toast.makeText(this, "Record is updated", Toast.LENGTH_SHORT).show();
-                      finish();
+                      //finish();
                    }).addOnFailureListener(er ->
                    {
                        Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();

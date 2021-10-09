@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RVWorkout"></activity>
+        <activity android:name=".RVWorkoutDays"></activity>
     </application>
 
 </manifest>

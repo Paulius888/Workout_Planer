@@ -2,24 +2,19 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp">
+    android:layout_margin="20dp">
+
     <TextView
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:text="&#8942;"
         android:textSize="20sp"
         android:id="@+id/txt_option"
-        android:layout_gravity="right"/>
+        android:layout_gravity="end"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <ImageView
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@drawable/googleg_standard_color_18"
-            android:padding="5dp"
-            android:id="@+id/img_emp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
