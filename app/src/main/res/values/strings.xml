@@ -5,4 +5,11 @@
     <string name="login">LOGIN</string>
     <string name="register">REGISTER</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="regular_exercise_name"><u>Regular exercise name</u></string>
+    <string name="question_mark">\?</string>
+    <string name="go_to_exercises">Go to exercises</string>
+    <string name="start_button">Start</string>
+    <string name="pause_button">Pause</string>
+    <string name="reset_button">Reset</string>
 </resources>
