@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutPlaner">
+        <activity android:name=".ExercisesActivity"
+            android:exported="true"/>
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
