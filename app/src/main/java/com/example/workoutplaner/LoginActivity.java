@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()) {
                     if(isUserVerified(mAuth.getCurrentUser())) {
 
-                        redirectToMain();
+                        redirectToApp();
                     }
                     else {
                         Context context = getApplicationContext();
@@ -102,11 +102,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isUserVerified(FirebaseUser user) {
+        if(user != null) {
+            return true;
+        }
+
         return user.isEmailVerified();
     }
 
-    private void redirectToMain() {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void redirectToApp() {
+        Intent intent = new Intent(this, RVWorkout.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
@@ -120,10 +125,8 @@ public class LoginActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }
 
-    private void redirectToRegister() {
+    public void onRegisterClick(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
-
-    
 }
