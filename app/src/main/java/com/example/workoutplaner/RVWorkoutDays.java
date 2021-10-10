@@ -3,8 +3,12 @@ package com.example.workoutplaner;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +22,20 @@ public class RVWorkoutDays extends AppCompatActivity {
     private RVWorkoutDayAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Context context = this;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar_hamburger_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        MenuHandler.HandleMenuClick(item, this);
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +61,7 @@ public class RVWorkoutDays extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new RVWorkoutDayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent intent = new Intent(context, RVWorkout.class);
+                Intent intent = new Intent(context, ExercisesActivity.class);
                 context.startActivity(intent);
             }
         });
