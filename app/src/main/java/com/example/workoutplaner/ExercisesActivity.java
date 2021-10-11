@@ -53,7 +53,7 @@ public class ExercisesActivity extends AppCompatActivity {
 
 //        RegularExerciseFragment reg1 = new RegularExerciseFragment();
 //        vpAdapter.addFragment(reg1, "Bench");
-//        vpAdapter.addFragment(new TimerExerciseFragment(), "Plank");
+        vpAdapter.addFragment(new TimerExerciseFragment(), "Plank");
 //        vpAdapter.addFragment(new RegularExerciseFragment(), "Squat");
 //        vpAdapter.addFragment(new RegularExerciseFragment(), "OHP");
 //        vpAdapter.addFragment(new TimerExerciseFragment(), "Running");
