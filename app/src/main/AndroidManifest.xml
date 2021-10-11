@@ -17,6 +17,10 @@
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
             android:exported="true" />
         <activity
+            android:name=".NavigationActivity"
+            android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
+            android:exported="true" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="true" />
         <activity

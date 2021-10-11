@@ -23,8 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:src="@drawable/ic_add"
-        app:tint="@color/white" />
+        app:backgroundTint="#009688"
+        app:tint="@color/white"
+        tools:ignore="SpeakableTextPresentCheck" />
 </RelativeLayout>

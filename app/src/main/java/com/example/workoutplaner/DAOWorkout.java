@@ -12,7 +12,7 @@ public class DAOWorkout {
     private DatabaseReference databaseReference;
     public DAOWorkout()
     {
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        FirebaseDatabase db = FirebaseDatabase.getInstance("https://workoutapp-dc337-default-rtdb.europe-west1.firebasedatabase.app");
         databaseReference = db.getReference(Workout.class.getSimpleName());
     }
 

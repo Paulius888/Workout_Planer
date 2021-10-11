@@ -7,116 +7,128 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:backgroundTint="#FFFFFF">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/app_name"
+        android:textColor="#009688"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117" />
+
+    <EditText
+        android:id="@+id/register_user_name"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="56dp"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.399" />
+
+    <EditText
+        android:id="@+id/register_cnfrm_password"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="140dp"
+        android:ems="10"
+        android:hint="@string/cnfrmPassword"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_password"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="56dp"
+
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_cnfrm_email"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/register_cnfrm_email"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="56dp"
+        android:ems="10"
+        android:hint="@string/cnfrmEmail"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_email"
+        app:layout_constraintVertical_bias="0.0" />
+
     <Button
         android:id="@+id/button_crt_accnt"
-        android:layout_width="213dp"
-        android:layout_height="56dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="630dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="56dp"
         android:backgroundTint="#56C3AD"
         android:text="@string/create_account"
         android:textColor="#37474F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/register_cnfrm_password"
+        app:layout_constraintVertical_bias="0.0" />
 
-<EditText
-    android:id="@+id/register_user_name"
-    android:layout_width="208dp"
-    android:layout_height="59dp"
-    android:layout_marginTop="340dp"
-    android:layout_marginBottom="5dp"
-    android:ems="10"
-    android:hint="@string/username"
-    android:inputType="textPersonName"
-    android:textColorHint="#37474F"
-    app:layout_constraintBottom_toTopOf="@+id/register_email"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.507"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-<EditText
-    android:id="@+id/register_email"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="400dp"
-    android:layout_marginBottom="5dp"
-    android:ems="10"
-    android:hint="@string/email_register"
-    android:inputType="textPersonName"
-    android:minHeight="48dp"
-    android:textColorHint="#37474F"
-    app:layout_constraintBottom_toTopOf="@+id/register_cnfrm_email"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-<EditText
-    android:id="@+id/register_cnfrm_email"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="440dp"
-    android:layout_marginBottom="5dp"
-    android:ems="10"
-    android:hint="@string/cnfrmEmail"
-    android:inputType="textPersonName"
-    android:minHeight="48dp"
-    android:textColorHint="#37474F"
-    app:layout_constraintBottom_toTopOf="@+id/register_password"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-<EditText
-    android:id="@+id/register_password"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="480dp"
-    android:layout_marginBottom="5dp"
-    android:ems="10"
-    android:hint="@string/password_register"
-
-    android:inputType="textPassword"
-    android:minHeight="48dp"
-    android:textColorHint="#37474F"
-    app:layout_constraintBottom_toTopOf="@+id/register_cnfrm_password"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-<EditText
-    android:id="@+id/register_cnfrm_password"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="500dp"
-    android:layout_marginBottom="40dp"
-    android:ems="10"
-    android:hint="@string/cnfrmPassword"
-    android:inputType="textPassword"
-    android:minHeight="48dp"
-    android:textColorHint="#37474F"
-    app:layout_constraintBottom_toTopOf="@+id/button_crt_accnt"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.497"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.38" />
-
-<androidx.cardview.widget.CardView
-    android:id="@+id/cardView"
-    android:layout_width="155dp"
-    android:layout_height="155dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="250dp"
-    app:layout_constraintBottom_toTopOf="@+id/register_user_name"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-</androidx.cardview.widget.CardView>
+    <EditText
+        android:id="@+id/register_email"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="56dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_user_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
