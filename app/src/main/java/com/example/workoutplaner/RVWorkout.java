@@ -58,8 +58,8 @@ public class RVWorkout extends AppCompatActivity
         adapter = new RVWorkoutAdapter(this);
         recyclerView.setAdapter(adapter);
         dao = new DAOWorkout();
-//        workoutActivityAddButton = (FloatingActionButton) findViewById(R.id.addingBtn);
-//        workoutActivityAddButton.setOnClickListener(startAddingActivity);
+        workoutActivityAddButton = (FloatingActionButton) findViewById(R.id.addingBtn);
+        workoutActivityAddButton.setOnClickListener(startAddingActivity);
         loadData();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

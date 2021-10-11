@@ -29,16 +29,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_submit"
         android:background="@android:color/holo_blue_dark"
+        android:layout_marginTop="10dp"
         android:text="Submit"
         android:textColor="@android:color/white"/>
 
     <Button
+        android:id="@+id/btn_open"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_open"
+        android:layout_marginTop="10dp"
         android:background="@android:color/holo_blue_dark"
         android:text="Open"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white" />
 
 
 </LinearLayout>
