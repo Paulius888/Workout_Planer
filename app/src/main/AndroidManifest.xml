@@ -20,11 +20,14 @@
             android:name=".NavigationActivity"
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
             android:exported="true" />
+        <activity android:name=".LoginActivity"
+            android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
+            android:exported="true" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".OfflineActivity"
             android:exported="true"
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar">
             <intent-filter>
