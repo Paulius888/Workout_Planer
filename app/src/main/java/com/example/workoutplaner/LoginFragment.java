@@ -68,12 +68,7 @@ public class LoginFragment extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                RegisterFragment nextFrag= new RegisterFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment, nextFrag, "findThisFragment")
-                        .setReorderingAllowed(true)
-                        .commit();
+                onRegisterClick(v);
             }
         });
         forgotPassword = v.findViewById(R.id.forgotPassword);
@@ -118,7 +113,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    if(isUserVerified(mAuth.getCurrentUser())) {
+                    if(mAuth.getCurrentUser().isEmailVerified()) {
 
                         redirectToApp();
                     }
@@ -141,6 +136,7 @@ public class LoginFragment extends Fragment {
         ForgotPasswordFragment nextFrag= new ForgotPasswordFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
+                .addToBackStack(null)
                 .commit();
     }
 
@@ -172,6 +168,7 @@ public class LoginFragment extends Fragment {
        RegisterFragment nextFrag= new RegisterFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
+                .addToBackStack(null)
                 .setReorderingAllowed(true)
                 .commit();
     }
