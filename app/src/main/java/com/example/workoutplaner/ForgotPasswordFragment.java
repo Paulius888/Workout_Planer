@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class ForgotPasswordFragment extends Fragment {
 
     EditText email;
     FirebaseAuth auth;
+    Button button;
 
     public ForgotPasswordFragment() {
         // Required empty public constructor
@@ -40,6 +42,13 @@ public class ForgotPasswordFragment extends Fragment {
 
         email = v.findViewById(R.id.forgotten_email);
         auth = FirebaseAuth.getInstance();
+        button = v.findViewById(R.id.reset_password);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onResetClick(v);
+            }
+        });
         return v;
     }
     private void onResetClick(View view) {
@@ -50,7 +59,7 @@ public class ForgotPasswordFragment extends Fragment {
             email.requestFocus();
             return;
         }
-        if(Patterns.EMAIL_ADDRESS.matcher(enteredEmail).matches()) {
+        if(!Patterns.EMAIL_ADDRESS.matcher(enteredEmail).matches()) {
             email.setError("Please provide valid email!");
             email.requestFocus();
             return;
@@ -61,11 +70,21 @@ public class ForgotPasswordFragment extends Fragment {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(getContext(), "Check your email to reset your password!", Toast.LENGTH_LONG).show();
+                    toLogin();
                 }
                 else {
                     Toast.makeText(getContext(), "Try again! Something wrong happened", Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+    private void toLogin()
+    {
+        LoginFragment nextFrag= new LoginFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment, nextFrag, "findThisFragment")
+                .setReorderingAllowed(true)
+                .commit();
+
     }
 }
