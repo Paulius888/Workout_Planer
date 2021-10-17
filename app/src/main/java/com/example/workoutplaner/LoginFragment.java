@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +40,7 @@ public class LoginFragment extends Fragment {
     ProgressBar progressBar;
     boolean isLoading;
 
+
         public LoginFragment() {
         // Required empty public constructor
     }
@@ -49,6 +52,7 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.activity_login, container, false);
+        //View v =  inflater.inflate(R.layout.fragment_login, container, false);
         mAuth = FirebaseAuth.getInstance();
 
         email = v.findViewById(R.id.email);
@@ -64,7 +68,12 @@ public class LoginFragment extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onRegisterClick(v);
+
+                RegisterFragment nextFrag= new RegisterFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment, nextFrag, "findThisFragment")
+                        .setReorderingAllowed(true)
+                        .commit();
             }
         });
         forgotPassword = v.findViewById(R.id.forgotPassword);
@@ -132,7 +141,6 @@ public class LoginFragment extends Fragment {
         ForgotPasswordFragment nextFrag= new ForgotPasswordFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
-                .addToBackStack(null)
                 .commit();
     }
 
@@ -161,10 +169,11 @@ public class LoginFragment extends Fragment {
     }
 
     public void onRegisterClick(View view) {
-        RegisterFragment nextFrag= new RegisterFragment();
+       RegisterFragment nextFrag= new RegisterFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
-                .addToBackStack(null)
+                .setReorderingAllowed(true)
                 .commit();
     }
+
 }

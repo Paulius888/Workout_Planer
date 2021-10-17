@@ -36,6 +36,7 @@ public class ForgotPasswordFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.activity_forgot_password, container, false);
+        //View v =  inflater.inflate(R.layout.fragment_forgot_password, container, false);
 
         email = v.findViewById(R.id.forgotten_email);
         auth = FirebaseAuth.getInstance();

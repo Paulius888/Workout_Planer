@@ -42,6 +42,7 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.activity_register, container, false);
+        //View v =  inflater.inflate(R.layout.fragment_register, container, false);
         createAcc = (Button) v.findViewById(R.id.button_crt_accnt);
         createAcc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +65,7 @@ public class RegisterFragment extends Fragment {
         LoginFragment nextFrag= new LoginFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
-                .addToBackStack(null)
+                .setReorderingAllowed(true)
                 .commit();
     }
     private void registerUser() {
