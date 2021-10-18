@@ -6,16 +6,27 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Chronometer;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Map;
 
 public class ExercisesActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private ArrayList<ExerciseState> ids;
+    private Date date;
+    private long start;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -35,11 +46,12 @@ public class ExercisesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercises);
-
+        ids = new ArrayList<>();
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         tabLayout.setupWithViewPager(viewPager);
         VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        start = SystemClock.elapsedRealtime();
 
         for (int i = 0; i < 5; i++){
             Bundle bundle = new Bundle();
@@ -49,15 +61,68 @@ public class ExercisesActivity extends AppCompatActivity {
             RegularExerciseFragment reg1 = new RegularExerciseFragment();
             reg1.setArguments(bundle);
             vpAdapter.addFragment(reg1, "Bench");
+
+            ids.add(new ExerciseState("exerciseName " + i));
         }
 
 //        RegularExerciseFragment reg1 = new RegularExerciseFragment();
 //        vpAdapter.addFragment(reg1, "Bench");
-        vpAdapter.addFragment(new TimerExerciseFragment(), "Plank");
+        vpAdapter.addFragment(new TimerExerciseFragment(), "Time");
 //        vpAdapter.addFragment(new RegularExerciseFragment(), "Squat");
 //        vpAdapter.addFragment(new RegularExerciseFragment(), "OHP");
 //        vpAdapter.addFragment(new TimerExerciseFragment(), "Running");
 //        vpAdapter.addFragment(new TimerExerciseFragment(), "Timer");
         viewPager.setAdapter(vpAdapter);
+    }
+
+    public void setExerciseState(boolean newState, String id){
+        String emp = "";
+        for (int i = 0; i < ids.size(); i++){
+            emp += ids.get(i).getId() + " | ";
+            if (ids.get(i).getId().equals(id)){
+                ids.get(i).setState(newState);
+                setNewFragment();
+                return;
+            }
+        }
+        Toast.makeText(this, emp + id, Toast.LENGTH_LONG).show();
+    }
+
+    private void setNewFragment(){
+        for (int i = 0; i < ids.size(); i++) {
+            if (!ids.get(i).getState()) {
+                Toast.makeText(this, ids.get(i).getId(), Toast.LENGTH_LONG).show();
+                viewPager.setCurrentItem(i);
+                return;
+            }
+        }
+        viewPager.setCurrentItem(ids.size());
+    }
+
+    public long TimeElapsed() {
+        long end = System.currentTimeMillis();
+        return start;
+    }
+
+    private class ExerciseState{
+        private String Id;
+        private boolean State;
+
+        public ExerciseState(String id){
+            Id = id;
+            State = false;
+        }
+
+        public void setState(boolean state){
+            State = state;
+        }
+
+        public String getId(){
+            return Id;
+        }
+
+        public boolean getState(){
+            return State;
+        }
     }
 }
