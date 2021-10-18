@@ -13,28 +13,14 @@
         <activity android:name=".ExercisesActivity"
             android:exported="true"/>
         <activity
-            android:name=".RegisterActivity"
-            android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
-            android:exported="true" />
-        <activity
             android:name=".NavigationActivity"
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
-            android:exported="true" />
-        <activity android:name=".LoginActivity"
-            android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
-            android:exported="true" />
-        <activity
-            android:name=".ForgotPasswordActivity"
             android:exported="true" />
         <activity
             android:name=".OfflineActivity"
             android:exported="true"
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".WorkoutPageActivity"
             android:exported="true"/>
@@ -42,7 +28,13 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity android:name=".RVWorkout"
-            android:exported="true" />
+            android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            </activity>
         <activity android:name=".RVWorkoutDays"/>
     </application>
 

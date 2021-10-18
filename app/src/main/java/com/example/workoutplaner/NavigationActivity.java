@@ -20,8 +20,11 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     public void onLogoutClick(View view) {
+        /*
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        this.startActivity(intent);
+        this.startActivity(intent);*/
+        Intent intent = new Intent(this, LoginFragment.class);
+        startActivity(intent);
     }
 }
