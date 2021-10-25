@@ -26,15 +26,11 @@ public class TimerExerciseFragment extends Fragment {
 
         chronometer = rootView.findViewById(R.id.increasingChronometer);
         chronometer.setFormat("Time: %s");
-        chronometer.setBase(SystemClock.elapsedRealtime());
+        long timeElapsed = ((ExercisesActivity)getActivity()).TimeElapsed();
+        chronometer.setBase(timeElapsed);
+        chronometer.start();
 
-        View startButton = rootView.findViewById(R.id.increasingButtonStart);
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startChronometer(v);
-            }
-        });
+        running = true;
 
         View pauseButton = rootView.findViewById(R.id.increasingButtonPause);
         pauseButton.setOnClickListener(new View.OnClickListener() {
@@ -44,29 +40,13 @@ public class TimerExerciseFragment extends Fragment {
             }
         });
 
-        View resetButton = rootView.findViewById(R.id.increasingButtonReset);
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetChronometer(v);
-            }
-        });
 
         return rootView;
-    }
-
-    public void startChronometer(View view){
-        if (!running){
-            chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
-            chronometer.start();
-            running = true;
-        }
     }
 
     public void pauseChronometer(View v){
         if (running){
             chronometer.stop();
-            pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
             running = false;
         }
     }

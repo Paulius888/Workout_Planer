@@ -6,15 +6,18 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 public class ExercisesActivity extends AppCompatActivity {
@@ -22,6 +25,8 @@ public class ExercisesActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ArrayList<ExerciseState> ids;
+    private Date date;
+    private long start;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -46,6 +51,7 @@ public class ExercisesActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         tabLayout.setupWithViewPager(viewPager);
         VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        start = SystemClock.elapsedRealtime();
 
         for (int i = 0; i < 5; i++){
             Bundle bundle = new Bundle();
@@ -61,7 +67,7 @@ public class ExercisesActivity extends AppCompatActivity {
 
 //        RegularExerciseFragment reg1 = new RegularExerciseFragment();
 //        vpAdapter.addFragment(reg1, "Bench");
-        vpAdapter.addFragment(new TimerExerciseFragment(), "Plank");
+        vpAdapter.addFragment(new TimerExerciseFragment(), "Time");
 //        vpAdapter.addFragment(new RegularExerciseFragment(), "Squat");
 //        vpAdapter.addFragment(new RegularExerciseFragment(), "OHP");
 //        vpAdapter.addFragment(new TimerExerciseFragment(), "Running");
@@ -83,13 +89,19 @@ public class ExercisesActivity extends AppCompatActivity {
     }
 
     private void setNewFragment(){
-        for (int i = 0; i < ids.size(); i++){
-            if (!ids.get(i).getState()){
+        for (int i = 0; i < ids.size(); i++) {
+            if (!ids.get(i).getState()) {
                 Toast.makeText(this, ids.get(i).getId(), Toast.LENGTH_LONG).show();
                 viewPager.setCurrentItem(i);
                 return;
             }
         }
+        viewPager.setCurrentItem(ids.size());
+    }
+
+    public long TimeElapsed() {
+        long end = System.currentTimeMillis();
+        return start;
     }
 
     private class ExerciseState{
