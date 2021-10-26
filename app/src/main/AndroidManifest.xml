@@ -20,6 +20,11 @@
             android:name=".OfflineActivity"
             android:exported="true"
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
 
         </activity>
         <activity android:name=".WorkoutPageActivity"
@@ -29,11 +34,7 @@
             android:exported="true" />
         <activity android:name=".RVWorkout"
             android:exported="true"   >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             </activity>
         <activity android:name=".RVWorkoutDays"/>
     </application>

@@ -1,8 +1,14 @@
 package com.example.workoutplaner;
 
+
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,8 +24,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.io.*;
 
 public class RVWorkout extends AppCompatActivity
 {
@@ -31,6 +42,7 @@ public class RVWorkout extends AppCompatActivity
     String key =null;
     private FloatingActionButton workoutActivityAddButton;
     private Context context = this;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,6 +73,13 @@ public class RVWorkout extends AppCompatActivity
         workoutActivityAddButton = (FloatingActionButton) findViewById(R.id.addingBtn);
         workoutActivityAddButton.setOnClickListener(startAddingActivity);
         loadData();
+
+
+        //prints user ID to logcat during execution
+        String uid = user.getUid();
+        Log.i("Info", uid);
+        //****************************************
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
