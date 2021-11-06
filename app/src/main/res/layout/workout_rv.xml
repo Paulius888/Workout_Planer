@@ -17,6 +17,15 @@
             android:layout_height="match_parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:visibility="gone"
+        android:text="@string/empty_view" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addingBtn"
         android:layout_width="wrap_content"

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class RVWorkout extends AppCompatActivity
     RecyclerView recyclerView;
     RVWorkoutAdapter adapter;
     DAOWorkout dao;
+    private TextView emptyView;
     boolean isLoading=false;
     String key =null;
     private FloatingActionButton workoutActivityAddButton;
@@ -54,6 +56,7 @@ public class RVWorkout extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.workout_rv);
+        emptyView = findViewById(R.id.empty_view);
         swipeRefreshLayout = findViewById(R.id.swipe);
         recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
@@ -104,6 +107,14 @@ public class RVWorkout extends AppCompatActivity
                     }
                 }
                 adapter.setItems(workouts);
+                if (workouts.isEmpty()) {
+                    recyclerView.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    emptyView.setVisibility(View.GONE);
+                }
                 adapter.notifyDataSetChanged();
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
