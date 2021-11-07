@@ -33,12 +33,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WorkoutPageActivity"
+        <activity android:name=".Workouts.WorkoutPageActivity"
             android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity android:name=".RVWorkout"
+        <activity android:name=".Workouts.RVWorkout"
             android:exported="true" />
         <activity android:name=".RVWorkoutDays"/>
     </application>

@@ -14,7 +14,7 @@
         android:top="0dp"
         android:bottom="2.5dp">
         <shape android:shape="oval">
-            <solid android:color="#5EB1F3"/>
+            <solid android:color="#964B00"/>
             <size android:width="160dp" android:height="150dp"/>
         </shape>
     </item>

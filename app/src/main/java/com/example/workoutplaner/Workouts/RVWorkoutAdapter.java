@@ -1,4 +1,4 @@
-package com.example.workoutplaner;
+package com.example.workoutplaner.Workouts;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.workoutplaner.R;
+import com.example.workoutplaner.RVWorkoutDays;
+import com.example.workoutplaner.Workouts.DAOWorkout;
+import com.example.workoutplaner.Workouts.Workout;
+import com.example.workoutplaner.Workouts.WorkoutPageActivity;
+import com.example.workoutplaner.Workouts.WorkoutVH;
 
 import java.util.ArrayList;
 
@@ -43,7 +50,7 @@ public class RVWorkoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         WorkoutVH vh = (WorkoutVH) holder;
         Workout workout = w==null? list.get(position):w;
         vh.txt_name.setText(workout.getName());
-        vh.txt_position.setText(workout.getPosition());
+        //vh.txt_position.setText(workout.getPosition());
         vh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

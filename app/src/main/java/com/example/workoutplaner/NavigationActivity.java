@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.workoutplaner.Workouts.RVWorkout;
+
 public class NavigationActivity extends AppCompatActivity {
 
     @Override
