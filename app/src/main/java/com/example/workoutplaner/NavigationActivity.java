@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.workoutplaner.Workouts.RVWorkout;
+import com.example.workoutplaner.Workouts.WorkoutActivity;
 
 public class NavigationActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     public void onWorkoutClick(View view) {
-        Intent intent = new Intent(this, RVWorkout.class);
+        Intent intent = new Intent(this, WorkoutActivity.class);
         this.startActivity(intent);
     }
 

@@ -1,4 +1,4 @@
-package com.example.workoutplaner.Workouts;
+package com.example.workoutplaner.Days;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,17 +26,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class RVWorkout extends AppCompatActivity
+public class DayActivity extends AppCompatActivity
 {
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recyclerView;
-    RVWorkoutAdapter adapter;
-    DAOWorkout dao;
+    RVDayAdapter adapter;
+    DAODay dao;
     private TextView emptyView;
     boolean isLoading=false;
     String key =null;
     private FloatingActionButton workoutActivityAddButton;
     private Context context = this;
+    private String workoutID;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -55,33 +56,38 @@ public class RVWorkout extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.workout_rv);
+        setContentView(R.layout.day_rv);
+
+        Bundle bundle = getIntent().getExtras();
+        workoutID = bundle.getString("workoutID");
+
+
         emptyView = findViewById(R.id.empty_view);
         swipeRefreshLayout = findViewById(R.id.swipe);
         recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
-        adapter = new RVWorkoutAdapter(this);
+        adapter = new RVDayAdapter(this);
         recyclerView.setAdapter(adapter);
-        dao = new DAOWorkout();
+        dao = new DAODay();
         workoutActivityAddButton = (FloatingActionButton) findViewById(R.id.addingBtn);
         workoutActivityAddButton.setOnClickListener(startAddingActivity);
-        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        String useruid=user.getUid();
-        loadData(useruid);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userUID = user.getUid();
+        loadData(userUID);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 int totalItem = linearLayoutManager.getItemCount();
                 int lastVisible = linearLayoutManager.findLastCompletelyVisibleItemPosition();
-                if(totalItem< lastVisible)
+                if(totalItem < lastVisible)
                 {
                     if(!isLoading)
                     {
                         isLoading=true;
-                        loadData(useruid);
+                        loadData(userUID);
                     }
 
                 }
@@ -94,20 +100,20 @@ public class RVWorkout extends AppCompatActivity
         swipeRefreshLayout.setRefreshing(true);
         dao.get(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            //holds workout objects
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<Workout> workouts = new ArrayList<>();
+                ArrayList<Day> days = new ArrayList<>();
                 for(DataSnapshot data : snapshot.getChildren()){
-                    Workout workout = data.getValue(Workout.class);
-                    String usersid = workout.getUser();
-                    if(useruid.equals(usersid)) {
-                        workout.setKey(data.getKey());
-                        workouts.add(workout);
+                    Day day = data.getValue(Day.class);
+                    String usersid = day.getUserID();
+                    String dayWorkoutId = day.getWorkoutID();
+                    if(useruid.equals(usersid) && workoutID.equals(dayWorkoutId)) {
+                        day.setKey(data.getKey());
+                        days.add(day);
                         key = data.getKey();
                     }
                 }
-                adapter.setItems(workouts);
-                if (workouts.isEmpty()) {
+                adapter.setItems(days);
+                if (days.isEmpty()) {
                     recyclerView.setVisibility(View.GONE);
                     emptyView.setVisibility(View.VISIBLE);
                 }
@@ -127,16 +133,17 @@ public class RVWorkout extends AppCompatActivity
         });
     }
 
-    public void runAddingActivity(boolean flag){
-        Intent intent = new Intent(context, WorkoutPageActivity.class);
-        intent.putExtra("flag",flag);
-        context.startActivity(intent);
+    public void runAddingActivity(){
+        Intent intent = new Intent(this, CreateOrEditDayActivity.class);
+        intent.putExtra("workoutID", workoutID);
+        startActivity(intent);
+        finish();
     }
 
     View.OnClickListener startAddingActivity = new View.OnClickListener(){
         @Override
         public void onClick(View view){
-            runAddingActivity(true);
+            runAddingActivity();
         }
     };
 }

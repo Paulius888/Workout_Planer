@@ -28,7 +28,8 @@ public class DAOWorkout {
 
     public Task<Void> remove(String key)
     {
-        return databaseReference.child(key).removeValue();
+
+         return databaseReference.child(key).removeValue();
     }
 
     public Query get(String key)
