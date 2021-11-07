@@ -24,6 +24,7 @@ public class ExercisesActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
     private ArrayList<ExerciseState> ids;
     private Date date;
     private long start;
@@ -49,6 +50,9 @@ public class ExercisesActivity extends AppCompatActivity {
         ids = new ArrayList<>();
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
+
+
+
         tabLayout.setupWithViewPager(viewPager);
         VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         start = SystemClock.elapsedRealtime();
