@@ -10,6 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutPlaner">
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider{417037106750570}"
+            android:exported="true" />
         <activity android:name=".ExercisesActivity"
             android:exported="true"/>
         <activity

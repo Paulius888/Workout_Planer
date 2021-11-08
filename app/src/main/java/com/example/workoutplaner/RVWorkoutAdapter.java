@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -37,8 +41,13 @@ public class RVWorkoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position){
         Workout w = null;
         this.onBindViewHolder(holder,position,w);
+        setFadeAnimation(holder.itemView);
     }
-
+    private void setFadeAnimation(View view) {
+        AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(600);
+        view.startAnimation(anim);
+    }
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, Workout w) {
         WorkoutVH vh = (WorkoutVH) holder;
         Workout workout = w==null? list.get(position):w;
@@ -50,6 +59,13 @@ public class RVWorkoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 Intent intent = new Intent(context, RVWorkoutDays.class);
                 intent.putExtra("name", workout.getName());
                 context.startActivity(intent);
+                /*
+                final LayoutAnimationController controller =
+                        AnimationUtils.loadLayoutAnimation(context, R.anim.fadein);
+
+                 */
+
+
             }
         });
         vh.txt_option.setOnClickListener(v->

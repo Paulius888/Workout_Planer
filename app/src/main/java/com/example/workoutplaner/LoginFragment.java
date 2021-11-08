@@ -50,6 +50,13 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+      /*  if (FirebaseAuth.getInstance().getCurrentUser() != null)
+        {
+           redirectToApp();
+           //when user logs out current user becomes null
+        }
+*/
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.activity_login, container, false);
         //View v =  inflater.inflate(R.layout.fragment_login, container, false);
@@ -113,28 +120,31 @@ public class LoginFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    if(mAuth.getCurrentUser().isEmailVerified()) {
 
+                    if(mAuth.getCurrentUser().isEmailVerified()) {
                         redirectToApp();
                     }
                     else {
-                        Context context = getContext();
-                        Toast.makeText(context, "Email is still not verified!", Toast.LENGTH_LONG).show();
+
+                        Toast.makeText(getContext(), "Email is still not verified!", Toast.LENGTH_LONG).show();
                         stopLoading();
                     }
                 }
                 else {
+                    Toast.makeText(getContext(), "   ", Toast.LENGTH_SHORT).show();
                     stopLoading();
                     Context context = getContext();
                     Toast.makeText(context, "Failed to login! Please check your credentials", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
     }
 
     public void onForgotPasswordClick(View view) {
         ForgotPasswordFragment nextFrag= new ForgotPasswordFragment();
-        getActivity().getSupportFragmentManager().beginTransaction()
+        getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,
+                android.R.anim.slide_out_right)
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
                 .addToBackStack(null)
                 .commit();
@@ -152,6 +162,7 @@ public class LoginFragment extends Fragment {
         Intent intent = new Intent(getContext(), RVWorkout.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+        getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private void startLoading() {
@@ -167,6 +178,8 @@ public class LoginFragment extends Fragment {
     public void onRegisterClick(View view) {
        RegisterFragment nextFrag= new RegisterFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left,
+                android.R.anim.slide_out_right)
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
                 .addToBackStack(null)
                 .setReorderingAllowed(true)
