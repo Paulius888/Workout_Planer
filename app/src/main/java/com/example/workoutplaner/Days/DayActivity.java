@@ -38,6 +38,7 @@ public class DayActivity extends AppCompatActivity
     private FloatingActionButton workoutActivityAddButton;
     private Context context = this;
     private String workoutID;
+    private String titleName;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,7 +61,8 @@ public class DayActivity extends AppCompatActivity
 
         Bundle bundle = getIntent().getExtras();
         workoutID = bundle.getString("workoutID");
-        setTitle(bundle.getString("titleName") + " days");
+        titleName = bundle.getString("titleName");
+        setTitle(titleName + " days");
 
 
         emptyView = findViewById(R.id.empty_view);
@@ -113,7 +115,7 @@ public class DayActivity extends AppCompatActivity
                         key = data.getKey();
                     }
                 }
-                adapter.setItems(days);
+                adapter.setItems(days, workoutID, titleName);
                 if (days.isEmpty()) {
                     recyclerView.setVisibility(View.GONE);
                     emptyView.setVisibility(View.VISIBLE);
@@ -137,6 +139,7 @@ public class DayActivity extends AppCompatActivity
     public void runAddingActivity(){
         Intent intent = new Intent(this, CreateOrEditDayActivity.class);
         intent.putExtra("workoutID", workoutID);
+        intent.putExtra("titleName", titleName);
         startActivity(intent);
         finish();
     }

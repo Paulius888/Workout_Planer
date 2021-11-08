@@ -6,16 +6,18 @@ public class Exercise implements Serializable {
     private String name;
     private int sets;
     private String userID;
+    private String dayID;
     private String key;
 
     public Exercise(){
 
     }
 
-    public Exercise(String name, int sets, String userID){
+    public Exercise(String name, int sets, String userid, String dayid){
         this.name = name;
         this.sets = sets;
-        this.userID = userID;
+        this.userID = userid;
+        this.dayID = dayid;
     }
 
     public String getName(){
@@ -30,8 +32,10 @@ public class Exercise implements Serializable {
         return this.key;
     }
 
-    public String getUserId(){
-        return this.userID;
+    public String getDayID() { return dayID; }
+
+    public String getUserID(){
+        return userID;
     }
 
     public void setKey(String key){

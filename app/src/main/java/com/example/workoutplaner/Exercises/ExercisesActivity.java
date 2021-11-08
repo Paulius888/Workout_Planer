@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +20,8 @@ import com.example.workoutplaner.R;
 import com.example.workoutplaner.VPAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -30,13 +33,15 @@ public class ExercisesActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ArrayList<ExerciseState> ids;
-    private Date date;
     private long start;
     private DAOExercise dao;
     private FloatingActionButton addExerciseButton;
     private ArrayList<Exercise> regExercises;
     private ArrayList<ArrayList<ExerciseInput>> savedExercises;
+    private String dayID;
+    private String userID;
+    private String titleName;
+    private String key;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,7 +61,16 @@ public class ExercisesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercises);
-        ids = new ArrayList<>();
+
+        Bundle bundle = getIntent().getExtras();
+        titleName= bundle.getString("titleName");
+        dayID = bundle.getString("dayID");
+
+        setTitle(titleName + " exercises");
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         addExerciseButton = findViewById(R.id.addingBtn3);
@@ -67,7 +81,8 @@ public class ExercisesActivity extends AppCompatActivity {
         addExerciseButton.setOnClickListener(view ->{
             onAddExerciseClick(view);
         });
-        loadData();
+        key = null;
+        loadData(userID);
     }
 
     private void fillViewPager(){
@@ -76,41 +91,17 @@ public class ExercisesActivity extends AppCompatActivity {
         for (int i = 0; i < regExercises.size(); i++){
             savedExercises.add(new ArrayList<ExerciseInput>());
             Bundle bundle = new Bundle();
+
             bundle.putSerializable("regularExercisesList", savedExercises.get(i));
             bundle.putSerializable("exercise", regExercises.get(i));
             RegularExerciseFragment reg1 = new RegularExerciseFragment();
             reg1.setArguments(bundle);
             vpAdapter.addFragment(reg1, regExercises.get(i).getName());
-            Toast.makeText(this, regExercises.get(i).getName(), Toast.LENGTH_LONG).show();
-            ids.add(new ExerciseState("exerciseName " + i));
+            Toast.makeText(this, dayID, Toast.LENGTH_LONG).show();
         }
 
         vpAdapter.addFragment(new TimerExerciseFragment(), "Time");
         viewPager.setAdapter(vpAdapter);
-    }
-
-    public void setExerciseState(boolean newState, String id){
-        String emp = "";
-        for (int i = 0; i < ids.size(); i++){
-            emp += ids.get(i).getId() + " | ";
-            if (ids.get(i).getId().equals(id)){
-                ids.get(i).setState(newState);
-                setNewFragment();
-                return;
-            }
-        }
-        Toast.makeText(this, emp + id, Toast.LENGTH_LONG).show();
-    }
-
-    private void setNewFragment(){
-        for (int i = 0; i < ids.size(); i++) {
-            if (!ids.get(i).getState()) {
-//                Toast.makeText(this, ids.get(i).getId(), Toast.LENGTH_LONG).show();
-                viewPager.setCurrentItem(i);
-                return;
-            }
-        }
-        viewPager.setCurrentItem(ids.size());
     }
 
     public long TimeElapsed() {
@@ -140,15 +131,26 @@ public class ExercisesActivity extends AppCompatActivity {
         }
     }
 
-    private void loadData() {
-        dao.get().addValueEventListener(new ValueEventListener() {
+    private void loadData(String userID) {
+        dao.get(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 regExercises = new ArrayList<>();
                 for (DataSnapshot data : snapshot.getChildren()) {
                     Exercise ex = data.getValue(Exercise.class);
-                    ex.setKey(data.getKey());
-                    regExercises.add(ex);
+                    String usersid = ex.getUserID();
+                    String exerciseDayId = ex.getDayID();
+                    if(userID.equals(usersid) && dayID.equals(exerciseDayId)) {
+                        ex.setKey(data.getKey());
+                        regExercises.add(ex);
+                        key = data.getKey();
+                    }
+                    else {
+                        Log.e("COULDNT ADD, USER ID:", userID);
+                        Log.e("exercise USER ID:", usersid);
+                        Log.e("COULDNT ADD, DAY ID:", dayID);
+                        Log.e("exercise day ID:", exerciseDayId);
+                    }
                 }
                 fillViewPager();
             }
@@ -162,7 +164,9 @@ public class ExercisesActivity extends AppCompatActivity {
 
     public void onAddExerciseClick(View view){
         Intent intent = new Intent(this, CreateOrEditExerciseActivity.class);
-//        intent.putExtra("workoutID", workoutID);
+        intent.putExtra("dayID", dayID);
+        intent.putExtra("titleName", titleName);
+        intent.putExtra("userID", userID);
         startActivity(intent);
         finish();
     }

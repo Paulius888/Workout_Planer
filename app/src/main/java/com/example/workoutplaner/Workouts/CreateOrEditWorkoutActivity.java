@@ -39,20 +39,10 @@ public class CreateOrEditWorkoutActivity extends AppCompatActivity {
         setContentView(R.layout.workoutpage);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         String useruid=user.getUid();
-<<<<<<< HEAD:app/src/main/java/com/example/workoutplaner/Workouts/CreateOrEditWorkoutActivity.java
-=======
-        // used for displaying vector view
->>>>>>> 21e67cd (No changes made):app/src/main/java/com/example/workoutplaner/Workouts/WorkoutPageActivity.java
         ImageView done = findViewById(R.id.imageView_done);
         avd = (AnimatedVectorDrawable) done.getDrawable();
-
-<<<<<<< HEAD:app/src/main/java/com/example/workoutplaner/Workouts/CreateOrEditWorkoutActivity.java
         final EditText edit_name = findViewById(R.id.edit_name);
 
-=======
-        final EditText edit_name = findViewById(R.id.exercise_name);
-        //final EditText edit_position = findViewById(R.id.edit_position);
->>>>>>> 21e67cd (No changes made):app/src/main/java/com/example/workoutplaner/Workouts/WorkoutPageActivity.java
         Button btn = findViewById(R.id.btn_submit);
         DAOWorkout dao = new DAOWorkout();
         Workout workout_edit = (Workout)getIntent().getSerializableExtra("EDIT");

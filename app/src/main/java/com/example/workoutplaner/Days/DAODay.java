@@ -1,5 +1,8 @@
 package com.example.workoutplaner.Days;
 
+import android.util.Log;
+
+import com.example.workoutplaner.Exercises.DAOExercise;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +35,8 @@ public class DAODay {
 
     public Task<Void> remove(String key)
     {
+        DAOExercise exDAO = new DAOExercise();
+        exDAO.removeByParent(key);
         return databaseReference.child(key).removeValue();
     }
     public void removeByParent(String key) {
@@ -43,7 +48,7 @@ public class DAODay {
                             Day day = data.getValue(Day.class);
                             String dayWorkoutId = day.getWorkoutID();
                             if (key.equals(dayWorkoutId)) {
-                                remove(day.getKey());
+                                remove(data.getKey());
                             }
                         }
                     }
