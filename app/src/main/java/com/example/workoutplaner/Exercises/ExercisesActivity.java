@@ -1,23 +1,30 @@
-package com.example.workoutplaner;
+package com.example.workoutplaner.Exercises;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Chronometer;
 import android.widget.Toast;
 
+import com.example.workoutplaner.MenuHandler;
+import com.example.workoutplaner.R;
+import com.example.workoutplaner.VPAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Map;
 
 public class ExercisesActivity extends AppCompatActivity {
 
@@ -26,6 +33,10 @@ public class ExercisesActivity extends AppCompatActivity {
     private ArrayList<ExerciseState> ids;
     private Date date;
     private long start;
+    private DAOExercise dao;
+    private FloatingActionButton addExerciseButton;
+    private ArrayList<Exercise> regExercises;
+    private ArrayList<ArrayList<ExerciseInput>> savedExercises;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,29 +59,33 @@ public class ExercisesActivity extends AppCompatActivity {
         ids = new ArrayList<>();
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
+        addExerciseButton = findViewById(R.id.addingBtn3);
         tabLayout.setupWithViewPager(viewPager);
+        start = SystemClock.elapsedRealtime();
+        dao = new DAOExercise();
+        savedExercises = new ArrayList<>();
+        addExerciseButton.setOnClickListener(view ->{
+            onAddExerciseClick(view);
+        });
+        loadData();
+    }
+
+    private void fillViewPager(){
         VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        start = System.currentTimeMillis();
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < regExercises.size(); i++){
+            savedExercises.add(new ArrayList<ExerciseInput>());
             Bundle bundle = new Bundle();
-            Exercise exercise = new Exercise("exerciseName " + i);
-            bundle.putSerializable("exercise", exercise);
-
+            bundle.putSerializable("regularExercisesList", savedExercises.get(i));
+            bundle.putSerializable("exercise", regExercises.get(i));
             RegularExerciseFragment reg1 = new RegularExerciseFragment();
             reg1.setArguments(bundle);
-            vpAdapter.addFragment(reg1, "Bench");
-
+            vpAdapter.addFragment(reg1, regExercises.get(i).getName());
+            Toast.makeText(this, regExercises.get(i).getName(), Toast.LENGTH_LONG).show();
             ids.add(new ExerciseState("exerciseName " + i));
         }
 
-//        RegularExerciseFragment reg1 = new RegularExerciseFragment();
-//        vpAdapter.addFragment(reg1, "Bench");
         vpAdapter.addFragment(new TimerExerciseFragment(), "Time");
-//        vpAdapter.addFragment(new RegularExerciseFragment(), "Squat");
-//        vpAdapter.addFragment(new RegularExerciseFragment(), "OHP");
-//        vpAdapter.addFragment(new TimerExerciseFragment(), "Running");
-//        vpAdapter.addFragment(new TimerExerciseFragment(), "Timer");
         viewPager.setAdapter(vpAdapter);
     }
 
@@ -90,7 +105,7 @@ public class ExercisesActivity extends AppCompatActivity {
     private void setNewFragment(){
         for (int i = 0; i < ids.size(); i++) {
             if (!ids.get(i).getState()) {
-                Toast.makeText(this, ids.get(i).getId(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, ids.get(i).getId(), Toast.LENGTH_LONG).show();
                 viewPager.setCurrentItem(i);
                 return;
             }
@@ -100,7 +115,7 @@ public class ExercisesActivity extends AppCompatActivity {
 
     public long TimeElapsed() {
         long end = System.currentTimeMillis();
-        return 34;
+        return start;
     }
 
     private class ExerciseState{
@@ -122,6 +137,41 @@ public class ExercisesActivity extends AppCompatActivity {
 
         public boolean getState(){
             return State;
+        }
+    }
+
+    private void loadData() {
+        dao.get().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                regExercises = new ArrayList<>();
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    Exercise ex = data.getValue(Exercise.class);
+                    ex.setKey(data.getKey());
+                    regExercises.add(ex);
+                }
+                fillViewPager();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void onAddExerciseClick(View view){
+        Intent intent = new Intent(this, CreateOrEditExerciseActivity.class);
+//        intent.putExtra("workoutID", workoutID);
+        startActivity(intent);
+        finish();
+    }
+
+    public void sendDoneExercises(){
+        DAODoneExercise ex = new DAODoneExercise();
+        for (int i = 0; i < savedExercises.size(); i++){
+            DoneExercise done = new DoneExercise(savedExercises.get(i));
+            ex.add(done);
         }
     }
 }
