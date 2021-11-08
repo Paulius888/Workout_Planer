@@ -66,10 +66,10 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     public void onFBClick(View view) {
-        /*
+        
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.fb.me"));
-        startActivity(browserIntent);*/
-        sharePhotoToFacebook();
+        startActivity(browserIntent);
+       // sharePhotoToFacebook();
 
 
         /*final String urlFb = "fb://page/"+"417037106750570";
