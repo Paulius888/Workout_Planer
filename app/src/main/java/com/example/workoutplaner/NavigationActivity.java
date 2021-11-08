@@ -28,6 +28,9 @@ import com.facebook.appevents.AppEventsLogger;
 
 import java.util.List;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class NavigationActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -88,7 +91,6 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     public void onLogoutClick(View view) {
-
         FirebaseAuth.getInstance().signOut();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null)
@@ -102,14 +104,10 @@ public class NavigationActivity extends AppCompatActivity {
         finishAffinity();
 
         System.exit(0);
-
         /*
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         this.startActivity(intent);*/
-
-        Intent intent = new Intent(this, LoginFragment.class);
-        startActivity(intent);
 
         // Intent intent = new Intent(this, LoginFragment.class);
         //   startActivity(intent);

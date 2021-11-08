@@ -2,8 +2,10 @@ package com.example.workoutplaner;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class LoginFragment extends Fragment {
@@ -39,10 +43,38 @@ public class LoginFragment extends Fragment {
     TextView forgotPassword;
     ProgressBar progressBar;
     boolean isLoading;
+    private DatabaseReference mDatabase;
+
 
 
         public LoginFragment() {
         // Required empty public constructor
+    }
+    /*@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       if (FirebaseAuth.getInstance().getCurrentUser().getUid() != null)
+       {
+           Log.i("infoo" , "logged in");
+       }
+       else
+       {
+           Log.i("infoo" , "logged out");
+       }
+    }*/
+    private void check()
+    {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Log.i("logged" , "logged in");
+        } else {
+            Log.i("logged" , "logged out");
+        }
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
 
@@ -58,8 +90,14 @@ public class LoginFragment extends Fragment {
         }
 */
         // Inflate the layout for this fragment
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            //redirectToApp();
+            Log.i("loged" , "logged in");
+        }
         View v =  inflater.inflate(R.layout.activity_login, container, false);
         //View v =  inflater.inflate(R.layout.fragment_login, container, false);
+        mDatabase = FirebaseDatabase.getInstance().getReference("log");
         mAuth = FirebaseAuth.getInstance();
 
         email = v.findViewById(R.id.email);
@@ -187,3 +225,4 @@ public class LoginFragment extends Fragment {
     }
 
 }
+//https://guides.codepath.com/android/creating-and-using-fragments

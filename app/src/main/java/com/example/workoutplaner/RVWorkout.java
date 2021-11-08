@@ -25,7 +25,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.Nullable;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,10 +73,17 @@ public class RVWorkout extends AppCompatActivity
         workoutActivityAddButton.setOnClickListener(startAddingActivity);
         loadData();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Log.i("logged" , "logged in");
+        } else {
+            Log.i("logged" , "logged out");
+        }
+
 
         //prints user ID to logcat during execution
-        String uid = user.getUid();
-        Log.i("Info", uid);
+        //String uid = user.getUid();
+        //Log.i("Loged in", uid);
         //****************************************
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

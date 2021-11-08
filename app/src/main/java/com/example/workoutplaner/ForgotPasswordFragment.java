@@ -81,8 +81,8 @@ public class ForgotPasswordFragment extends Fragment {
     private void toLogin()
     {
         LoginFragment nextFrag= new LoginFragment();
-        getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_out_right,
-                android.R.anim.slide_in_left)
+        getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,
+                android.R.anim.slide_out_right)
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
                 .setReorderingAllowed(true)
                 .commit();

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.workoutplaner">
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -17,30 +20,34 @@
         <activity android:name=".ExercisesActivity"
             android:exported="true"/>
         <activity
-            android:name=".NavigationActivity"
-            android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
+            android:name=".ExercisesActivity"
             android:exported="true" />
+        <activity
+            android:name=".NavigationActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WorkoutPlaner.NoActionBar" />
         <activity
             android:name=".OfflineActivity"
             android:exported="true"
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".WorkoutPageActivity"
-            android:exported="true"/>
+        <activity
+            android:name=".WorkoutPageActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity android:name=".RVWorkout"
-            android:exported="true"   >
+        <activity
+            android:name=".RVWorkout"
+            android:exported="true"></activity>
+        <activity android:name=".RVWorkoutDays" />
 
-            </activity>
-        <activity android:name=".RVWorkoutDays"/>
     </application>
+
 
 </manifest>
