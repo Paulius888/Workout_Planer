@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TimerExerciseFragment"
+    tools:context=".Exercises.TimerExerciseFragment"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -25,20 +25,9 @@
         android:paddingBottom="20dp"/>
 
     <Button
-        android:id="@+id/increasingButtonStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_button" />
-
-    <Button
         android:id="@+id/increasingButtonPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/pause_button" />
 
-    <Button
-        android:id="@+id/increasingButtonReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reset_button" />
 </LinearLayout>

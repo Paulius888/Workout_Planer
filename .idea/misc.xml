@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/activity_exercises.xml" value="0.33" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/activity_forgot_password.xml" value="0.303125" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/activity_login.xml" value="0.34010416666666665" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/activity_main.xml" value="0.24230072463768115" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/activity_navigation.xml" value="0.303125" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/activity_register.xml" value="0.303125" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/add_exercise.xml" value="0.33" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/fragment_exercises.xml" value="0.27708333333333335" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/fragment_regular_exercise.xml" value="0.33" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/fragment_timer_exercise.xml" value="0.1" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/regular_item.xml" value="0.33" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/regular_layout.xml" value="0.15476190476190477" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/workout_item.xml" value="0.303125" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/workout_rv.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/workoutday_item.xml" value="0.303125" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/workoutday_rv.xml" value="0.303125" />
+        <entry key="..\:/Users/Dangis/Desktop/Uni/3 metai/Mobile app development/Workout app/app/src/main/res/layout/workoutpage.xml" value="0.303125" />
         <entry key="..\:/Users/eidim/AndroidStudioProjects/WorkoutPlaner/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/eidim/AndroidStudioProjects/WorkoutPlaner/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/eidim/AndroidStudioProjects/WorkoutPlaner/app/src/main/res/layout/activity_main.xml" value="0.1390625" />
