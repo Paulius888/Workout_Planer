@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.workoutplaner.ExercisesActivity;
+import com.example.workoutplaner.Exercises.ExercisesActivity;
 import com.example.workoutplaner.R;
 
 import java.util.ArrayList;
@@ -21,13 +21,18 @@ public class RVDayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     private Activity activity;
     ArrayList<Day> list = new ArrayList<>();
+    private String workoutID;
+    private String titleName;
+
     public RVDayAdapter(Activity ctx)
     {
         this.activity = ctx;
     }
-    public void setItems(ArrayList<Day> day)
+    public void setItems(ArrayList<Day> day, String workoutID, String titleName)
     {
         list.addAll(day);
+        this.workoutID = workoutID;
+        this.titleName = titleName;
     }
 
     @NonNull
@@ -51,7 +56,8 @@ public class RVDayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, ExercisesActivity.class);
-                intent.putExtra("dayID", day.getName());
+                intent.putExtra("dayID", day.getKey());
+                intent.putExtra("titleName", day.getName());
                 activity.startActivity(intent);
 
             }
@@ -67,6 +73,8 @@ public class RVDayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     case R.id.menu_edit:
                         Intent intent = new Intent(activity, CreateOrEditDayActivity.class);
                         intent.putExtra("EDIT", day);
+                        intent.putExtra("workoutID", workoutID);
+                        intent.putExtra("titleName", titleName);
                         activity.startActivity(intent);
                         activity.finish();
                         break;

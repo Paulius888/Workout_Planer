@@ -24,6 +24,7 @@ public class CreateOrEditDayActivity extends AppCompatActivity {
 
     AnimatedVectorDrawable avd;
     String workoutID;
+    String titleName;
 
     @Override
     public void onBackPressed() {
@@ -33,6 +34,7 @@ public class CreateOrEditDayActivity extends AppCompatActivity {
     private void endActivity() {
         Intent intent = new Intent(CreateOrEditDayActivity.this, DayActivity.class);
         intent.putExtra("workoutID", workoutID);
+        intent.putExtra("titleName", titleName);
         startActivity(intent);
         avd.stop();
         this.finish();
@@ -46,6 +48,7 @@ public class CreateOrEditDayActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         workoutID = bundle.getString("workoutID");
+        titleName = bundle.getString("titleName");
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String useruid = user.getUid();

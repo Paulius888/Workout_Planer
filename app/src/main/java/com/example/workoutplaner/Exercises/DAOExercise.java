@@ -1,8 +1,9 @@
-package com.example.workoutplaner.Days;
+package com.example.workoutplaner.Exercises;
 
 import android.util.Log;
 
-import com.example.workoutplaner.Exercises.DAOExercise;
+import com.example.workoutplaner.Days.Day;
+import com.example.workoutplaner.Workouts.Workout;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,19 +14,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class DAODay {
+public class DAOExercise {
 
     private DatabaseReference databaseReference;
-    FirebaseDatabase db;
-    public DAODay()
+    public DAOExercise()
     {
         FirebaseDatabase db = FirebaseDatabase.getInstance("https://workoutapp-dc337-default-rtdb.europe-west1.firebasedatabase.app");
-        databaseReference = db.getReference(Day.class.getSimpleName());
+        databaseReference = db.getReference(Exercise.class.getSimpleName());
     }
 
-    public Task<Void> add(Day day)
+    public Task<Void> add(Exercise exercise)
     {
-        return databaseReference.push().setValue(day);
+        return databaseReference.push().setValue(exercise);
     }
 
     public Task<Void> update(String key, HashMap<String, Object> hashMap)
@@ -35,8 +35,6 @@ public class DAODay {
 
     public Task<Void> remove(String key)
     {
-        DAOExercise exDAO = new DAOExercise();
-        exDAO.removeByParent(key);
         return databaseReference.child(key).removeValue();
     }
     public void removeByParent(String key) {
@@ -45,9 +43,9 @@ public class DAODay {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            Day day = data.getValue(Day.class);
-                            String dayWorkoutId = day.getWorkoutID();
-                            if (key.equals(dayWorkoutId)) {
+                            Exercise ex = data.getValue(Exercise.class);
+                            String dayID = ex.getDayID();
+                            if (key.equals(dayID)) {
                                 remove(data.getKey());
                             }
                         }

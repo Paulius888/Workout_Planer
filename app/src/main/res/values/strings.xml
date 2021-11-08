@@ -24,4 +24,6 @@
     <string name="reset_password">Reset Password</string>
     <string name="empty_view">In order to create Workout click the Floating button</string>
     <string name="empty_day_view">In order to create a Day, click the Floating button</string>
+    <string name="weight">Weight</string>
+    <string name="reps">Reps</string>
 </resources>

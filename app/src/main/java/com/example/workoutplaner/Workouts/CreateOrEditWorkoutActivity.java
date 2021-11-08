@@ -41,7 +41,6 @@ public class CreateOrEditWorkoutActivity extends AppCompatActivity {
         String useruid=user.getUid();
         ImageView done = findViewById(R.id.imageView_done);
         avd = (AnimatedVectorDrawable) done.getDrawable();
-
         final EditText edit_name = findViewById(R.id.edit_name);
 
         Button btn = findViewById(R.id.btn_submit);

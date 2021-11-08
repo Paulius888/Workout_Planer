@@ -1,4 +1,4 @@
-package com.example.workoutplaner;
+package com.example.workoutplaner.Exercises;
 
 import android.os.Bundle;
 
@@ -9,9 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Chronometer;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.workoutplaner.R;
 
 public class TimerExerciseFragment extends Fragment {
 
@@ -48,6 +47,7 @@ public class TimerExerciseFragment extends Fragment {
         if (running){
             chronometer.stop();
             running = false;
+            ((ExercisesActivity)getActivity()).sendDoneExercises();
         }
     }
 

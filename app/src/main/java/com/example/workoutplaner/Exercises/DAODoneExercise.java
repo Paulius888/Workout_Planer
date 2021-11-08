@@ -1,36 +1,27 @@
-package com.example.workoutplaner.Workouts;
+package com.example.workoutplaner.Exercises;
 
-import com.example.workoutplaner.Days.DAODay;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
-public class DAOWorkout {
-
+public class DAODoneExercise {
     private DatabaseReference databaseReference;
-    public DAOWorkout()
+    public DAODoneExercise()
     {
         FirebaseDatabase db = FirebaseDatabase.getInstance("https://workoutapp-dc337-default-rtdb.europe-west1.firebasedatabase.app");
-        databaseReference = db.getReference(Workout.class.getSimpleName());
+        databaseReference = db.getReference(DoneExercise.class.getSimpleName());
     }
 
-    public Task<Void> add(Workout workout)
+    public Task<Void> add(DoneExercise exercise)
     {
-        return databaseReference.push().setValue(workout);
-    }
-
-    public Task<Void> update(String key, HashMap<String, Object> hashMap)
-    {
-        return  databaseReference.child(key).updateChildren(hashMap);
+        return databaseReference.push().setValue(exercise);
     }
 
     public Task<Void> remove(String key)
     {
-        DAODay dayDB = new DAODay();
-        dayDB.removeByParent(key);
         return databaseReference.child(key).removeValue();
     }
 
