@@ -2,13 +2,33 @@ package com.example.workoutplaner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.workoutplaner.Workouts.WorkoutActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+
+import java.util.List;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class NavigationActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +41,26 @@ public class NavigationActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    public void onLogoutClick(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        this.startActivity(intent);
+    public void onFBClick(View view) {
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.fb.me"));
+        startActivity(browserIntent);
     }
+
+    public void onLogoutClick(View view) {
+        FirebaseAuth.getInstance().signOut();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null)
+        {
+            Log.i("loged", "loged out");
+        }
+        else
+        {
+            Log.i("loged ", "still loged ");
+        }
+        finishAffinity();
+
+        System.exit(0);
+    }
+
 }

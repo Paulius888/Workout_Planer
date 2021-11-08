@@ -55,7 +55,6 @@
         android:onClick="onLogoutClick"
         android:text="@string/logout"
         android:textAllCaps="false"
-
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,5 +63,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/facebook_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:onClick="onFBClick"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:labelFor="@id/facebook_button"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/images"/>/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
