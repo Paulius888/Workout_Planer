@@ -60,7 +60,10 @@ public class NavigationActivity extends AppCompatActivity {
         }
         finishAffinity();
 
-        System.exit(0);
+        Intent login = new Intent(this, OfflineActivity.class);
+        startActivity(login);
+
+
     }
 
 }

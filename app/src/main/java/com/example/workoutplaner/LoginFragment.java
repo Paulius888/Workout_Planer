@@ -84,6 +84,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        ((OfflineActivity)getActivity()).setCurrentFragment(LoginFragment.class.getSimpleName());
       /*  if (FirebaseAuth.getInstance().getCurrentUser() != null)
         {
            redirectToApp();
@@ -201,7 +202,7 @@ public class LoginFragment extends Fragment {
         Intent intent = new Intent(getContext(), WorkoutActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-        getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
     private void startLoading() {
@@ -217,8 +218,8 @@ public class LoginFragment extends Fragment {
     public void onRegisterClick(View view) {
         RegisterFragment nextFrag= new RegisterFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
-                .setCustomAnimations(android.R.anim.slide_in_left,
-                        android.R.anim.slide_out_right)
+                .setCustomAnimations(R.anim.slide_in_left,
+                        R.anim.slide_out_right)
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
                 .addToBackStack(null)
                 .setReorderingAllowed(true)

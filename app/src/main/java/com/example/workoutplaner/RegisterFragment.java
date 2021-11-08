@@ -44,6 +44,7 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ((OfflineActivity)getActivity()).setCurrentFragment(RegisterFragment.class.getSimpleName());
         View v =  inflater.inflate(R.layout.activity_register, container, false);
         //View v =  inflater.inflate(R.layout.fragment_register, container, false);
         createAcc = (Button) v.findViewById(R.id.button_crt_accnt);
@@ -68,8 +69,8 @@ public class RegisterFragment extends Fragment {
     public void runLoginPage (boolean flag)
     {
         LoginFragment nextFrag= new LoginFragment();
-        getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,
-                android.R.anim.slide_out_right)
+        getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_right,
+                R.anim.slide_out_left)
                 .replace(R.id.fragment, nextFrag, "findThisFragment")
                 .setReorderingAllowed(true)
                 .commit();
