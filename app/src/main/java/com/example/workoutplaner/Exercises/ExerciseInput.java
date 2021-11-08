@@ -1,6 +1,8 @@
 package com.example.workoutplaner.Exercises;
 
-public class ExerciseInput {
+import java.io.Serializable;
+
+public class ExerciseInput implements Serializable {
 
     private double Weight;
     private int Reps;

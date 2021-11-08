@@ -97,7 +97,6 @@ public class ExercisesActivity extends AppCompatActivity {
             RegularExerciseFragment reg1 = new RegularExerciseFragment();
             reg1.setArguments(bundle);
             vpAdapter.addFragment(reg1, regExercises.get(i).getName());
-            Toast.makeText(this, dayID, Toast.LENGTH_LONG).show();
         }
 
         vpAdapter.addFragment(new TimerExerciseFragment(), "Time");
@@ -144,12 +143,6 @@ public class ExercisesActivity extends AppCompatActivity {
                         ex.setKey(data.getKey());
                         regExercises.add(ex);
                         key = data.getKey();
-                    }
-                    else {
-                        Log.e("COULDNT ADD, USER ID:", userID);
-                        Log.e("exercise USER ID:", usersid);
-                        Log.e("COULDNT ADD, DAY ID:", dayID);
-                        Log.e("exercise day ID:", exerciseDayId);
                     }
                 }
                 fillViewPager();
