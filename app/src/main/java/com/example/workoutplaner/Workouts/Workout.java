@@ -15,7 +15,6 @@ public class Workout implements Serializable {
     {
         this.name = name;
         this.user = user;
-        //this.position = position;
     }
 
     public String getName() {
@@ -29,14 +28,6 @@ public class Workout implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-//    public String getPosition() {
-//        return position;
-//    }
-
-//    public void setPosition(String position) {
-//        this.position = position;
-//    }
 
     public String getKey(){
         return key;

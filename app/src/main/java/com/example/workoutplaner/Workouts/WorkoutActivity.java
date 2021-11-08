@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class RVWorkout extends AppCompatActivity
+public class WorkoutActivity extends AppCompatActivity
 {
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recyclerView;
@@ -94,7 +94,6 @@ public class RVWorkout extends AppCompatActivity
         swipeRefreshLayout.setRefreshing(true);
         dao.get(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            //holds workout objects
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Workout> workouts = new ArrayList<>();
                 for(DataSnapshot data : snapshot.getChildren()){
@@ -127,16 +126,16 @@ public class RVWorkout extends AppCompatActivity
         });
     }
 
-    public void runAddingActivity(boolean flag){
-        Intent intent = new Intent(context, WorkoutPageActivity.class);
-        intent.putExtra("flag",flag);
-        context.startActivity(intent);
+    public void runAddingActivity(){
+        Intent intent = new Intent(this, CreateOrEditWorkoutActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     View.OnClickListener startAddingActivity = new View.OnClickListener(){
         @Override
         public void onClick(View view){
-            runAddingActivity(true);
+            runAddingActivity();
         }
     };
 }

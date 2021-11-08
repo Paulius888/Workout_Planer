@@ -1,64 +1,64 @@
 package com.example.workoutplaner.Workouts;
 import android.content.Intent;
 import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
-
 import com.example.workoutplaner.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.HashMap;
 
-public class WorkoutPageActivity extends AppCompatActivity {
+public class CreateOrEditWorkoutActivity extends AppCompatActivity {
+    AnimatedVectorDrawable avd;
 
-    AnimatedVectorDrawableCompat avd;
-    AnimatedVectorDrawable avd2;
+    @Override
+    public void onBackPressed() {
+        endActivity();
+    }
+
+    private void endActivity() {
+        Intent intent = new Intent(this, WorkoutActivity.class);
+        startActivity(intent);
+        avd.stop();
+        this.finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.workoutpage);
-        //gets user id from database
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         String useruid=user.getUid();
-        // used for dispalying vector view
         ImageView done = findViewById(R.id.imageView_done);
+        avd = (AnimatedVectorDrawable) done.getDrawable();
 
         final EditText edit_name = findViewById(R.id.edit_name);
-        //final EditText edit_position = findViewById(R.id.edit_position);
+
         Button btn = findViewById(R.id.btn_submit);
-        Button btn_open = findViewById(R.id.btn_open);
-        btn_open.setOnClickListener(v->
-        {
-            Intent intent = new Intent(WorkoutPageActivity.this, RVWorkout.class);
-            startActivity(intent);
-        });
         DAOWorkout dao = new DAOWorkout();
         Workout workout_edit = (Workout)getIntent().getSerializableExtra("EDIT");
         if(workout_edit != null){
             btn.setText("UPDATE");
             edit_name.setText(workout_edit.getName());
-            //edit_position.setText(workout_edit.getPosition());
-            btn_open.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            btn.setText("SUBMIT");
-            btn_open.setVisibility(View.VISIBLE);
         }
         btn.setOnClickListener(v->
         {
-              Drawable drawable = done.getDrawable();
+            InputMethodManager imm = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
+            View view = this.getCurrentFocus();
+            if (view == null) {
+                view = new View(this);
+            }
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
               Workout workout = new Workout(edit_name.getText().toString(), useruid);
               if(workout_edit==null) {
                   if(edit_name.length() <= 0){
@@ -69,14 +69,14 @@ public class WorkoutPageActivity extends AppCompatActivity {
                   else {
                       dao.add(workout).addOnSuccessListener(suc ->
                       {
-                          if(drawable instanceof AnimatedVectorDrawableCompat){
-                              avd = (AnimatedVectorDrawableCompat) drawable;
-                              avd.start();
-                          } else if (drawable instanceof AnimatedVectorDrawable){
-                              avd2 = (AnimatedVectorDrawable) drawable;
-                              avd2.start();
-                          }
+                          avd.start();
                           Toast.makeText(this, "Record is inserted", Toast.LENGTH_SHORT).show();
+                          Handler handler = new Handler();
+                          handler.postDelayed(new Runnable() {
+                              public void run() {
+                                  endActivity();
+                              }
+                          }, 500);
                       }).addOnFailureListener(er ->
                       {
                           Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
@@ -86,7 +86,7 @@ public class WorkoutPageActivity extends AppCompatActivity {
               else{
                    HashMap<String,Object> hashMap = new HashMap<>();
                    hashMap.put("name", edit_name.getText().toString());
-                   //hashMap.put("position", edit_position.getText().toString());
+
                   if(edit_name.length() <= 0){
                       edit_name.setError("Name must be at least 1 character");
                       edit_name.requestFocus();
@@ -95,15 +95,14 @@ public class WorkoutPageActivity extends AppCompatActivity {
                   else {
                       dao.update(workout_edit.getKey(), hashMap).addOnSuccessListener(suc ->
                       {
-                          if(drawable instanceof AnimatedVectorDrawableCompat){
-                              avd = (AnimatedVectorDrawableCompat) drawable;
-                              avd.start();
-                          } else if (drawable instanceof AnimatedVectorDrawable){
-                              avd2 = (AnimatedVectorDrawable) drawable;
-                              avd2.start();
-                          }
+                          avd.start();
                           Toast.makeText(this, "Record is updated", Toast.LENGTH_SHORT).show();
-                          //finish();
+                          Handler handler = new Handler();
+                          handler.postDelayed(new Runnable() {
+                              public void run() {
+                                  endActivity();
+                              }
+                          }, 500);
                       }).addOnFailureListener(er ->
                       {
                           Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();

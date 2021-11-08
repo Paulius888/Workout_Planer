@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.workoutplaner.Workouts.RVWorkout;
+import com.example.workoutplaner.Workouts.WorkoutActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void redirectToApp() {
-        Intent intent = new Intent(this, RVWorkout.class);
+        Intent intent = new Intent(this, WorkoutActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
