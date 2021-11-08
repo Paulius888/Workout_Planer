@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.3234375" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.334375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_navigation.xml" value="0.3703125" />
         <entry key="app/src/main/res/layout/add_day.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/day_item.xml" value="0.5125" />
         <entry key="app/src/main/res/layout/day_rv.xml" value="0.3802083333333333" />
@@ -28,6 +29,8 @@
         <entry key="app/src/main/res/layout/workoutday_item.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/layout/workoutday_rv.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/workoutpage.xml" value="0.35885416666666664" />
+        <entry key="app/src/main/res/menu/action_bar_hamburger_menu.xml" value="0.3703125" />
+        <entry key="app/src/main/res/menu/workout_menu.xml" value="0.3703125" />
       </map>
     </option>
   </component>

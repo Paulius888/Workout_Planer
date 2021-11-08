@@ -39,11 +39,14 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity android:name=".Workouts.WorkoutActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Workouts"/>
         <activity android:name=".Days.DayActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Days"/>
         <activity android:name=".Days.CreateOrEditDayActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Days"/>
     </application>
 
 </manifest>

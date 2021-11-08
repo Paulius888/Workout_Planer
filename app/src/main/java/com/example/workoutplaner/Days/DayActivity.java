@@ -60,6 +60,7 @@ public class DayActivity extends AppCompatActivity
 
         Bundle bundle = getIntent().getExtras();
         workoutID = bundle.getString("workoutID");
+        setTitle(bundle.getString("titleName") + " days");
 
 
         emptyView = findViewById(R.id.empty_view);

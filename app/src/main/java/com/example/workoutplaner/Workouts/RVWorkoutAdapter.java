@@ -53,6 +53,7 @@ public class RVWorkoutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             public void onClick(View v) {
                 Intent intent = new Intent(activity, DayActivity.class);
                 intent.putExtra("workoutID", workout.getKey());
+                intent.putExtra("titleName", workout.getName());
                 activity.startActivity(intent);
             }
         });

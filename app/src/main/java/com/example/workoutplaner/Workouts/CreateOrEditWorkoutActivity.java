@@ -1,7 +1,6 @@
 package com.example.workoutplaner.Workouts;
 import android.content.Intent;
 import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -12,10 +11,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
-
-import com.example.workoutplaner.Days.CreateOrEditDayActivity;
-import com.example.workoutplaner.Days.DayActivity;
 import com.example.workoutplaner.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,7 +18,6 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.HashMap;
 
 public class CreateOrEditWorkoutActivity extends AppCompatActivity {
-
     AnimatedVectorDrawable avd;
 
     @Override
@@ -65,8 +59,6 @@ public class CreateOrEditWorkoutActivity extends AppCompatActivity {
                 view = new View(this);
             }
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-
-              Drawable drawable = done.getDrawable();
               Workout workout = new Workout(edit_name.getText().toString(), useruid);
               if(workout_edit==null) {
                   if(edit_name.length() <= 0){
