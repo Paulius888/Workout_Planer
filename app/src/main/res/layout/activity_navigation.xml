@@ -67,18 +67,55 @@
     <ImageButton
         android:id="@+id/facebook_button"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="0dp"
+        android:layout_width="130dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="4dp"
+        android:labelFor="@id/facebook_button"
         android:onClick="onFBClick"
-        android:layout_height="wrap_content"
+        android:src="@drawable/facebook"
         android:text="@string/logout"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:labelFor="@id/facebook_button"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/images"/>/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/instagram_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="130dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="4dp"
+        android:labelFor="@id/instagram_button"
+        android:onClick="onInstaClick"
+        android:src="@drawable/instagram"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/twitter_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="130dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="4dp"
+        android:labelFor="@id/twitter_button"
+        android:onClick="onTwitterClick"
+        android:src="@drawable/twitter"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
