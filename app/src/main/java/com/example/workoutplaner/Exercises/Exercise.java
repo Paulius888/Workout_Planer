@@ -8,16 +8,28 @@ public class Exercise implements Serializable {
     private String userID;
     private String dayID;
     private String key;
+    private String videoID;
 
     public Exercise(){
 
     }
 
-    public Exercise(String name, int sets, String userid, String dayid){
+    // used for fixing youtube links without need for user to trim them on there own
+    private String trimmer (String videoid){
+        String result="";
+        if(videoid.length() == 0){
+            return result;
+        }
+        result = videoid.substring(17, 28);
+        return result;
+    }
+
+    public Exercise(String name, int sets, String userid, String dayid, String videoid){
         this.name = name;
         this.sets = sets;
         this.userID = userid;
         this.dayID = dayid;
+        this.videoID = trimmer(videoid);
     }
 
     public String getName(){
@@ -36,6 +48,10 @@ public class Exercise implements Serializable {
 
     public String getUserID(){
         return userID;
+    }
+
+    public String getVideoID(){
+        return videoID;
     }
 
     public void setKey(String key){

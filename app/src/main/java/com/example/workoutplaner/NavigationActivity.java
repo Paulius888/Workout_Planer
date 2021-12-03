@@ -43,7 +43,19 @@ public class NavigationActivity extends AppCompatActivity {
 
     public void onFBClick(View view) {
 
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.fb.me"));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/groups/1277550729425565"));
+        startActivity(browserIntent);
+    }
+
+    public void onInstaClick(View view) {
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/?hl=en"));
+        startActivity(browserIntent);
+    }
+
+    public void onTwitterClick(View view) {
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/?lang=en"));
         startActivity(browserIntent);
     }
 
