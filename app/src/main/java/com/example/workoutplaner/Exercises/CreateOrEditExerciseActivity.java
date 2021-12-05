@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class CreateOrEditExerciseActivity extends AppCompatActivity {
 
-    private EditText exerciseName, setsAmount;
+    private EditText exerciseName, setsAmount, youtubeVideo;
     String dayID, titleName, userID;
 
     @Override
@@ -32,7 +32,7 @@ public class CreateOrEditExerciseActivity extends AppCompatActivity {
 
         exerciseName = findViewById(R.id.edit_name);
         setsAmount = findViewById(R.id.exercise_sets_amout);
-
+        youtubeVideo = findViewById(R.id.editTextVideoLink);
         final EditText edit_name = findViewById(R.id.edit_name);
 
         Button btn = findViewById(R.id.btn_submit);
@@ -47,7 +47,7 @@ public class CreateOrEditExerciseActivity extends AppCompatActivity {
 
         btn.setOnClickListener(v ->
         {
-            Exercise exercise = new Exercise(exerciseName.getText().toString(), Integer.parseInt(setsAmount.getText().toString()), userID, dayID);
+            Exercise exercise = new Exercise(exerciseName.getText().toString(), Integer.parseInt(setsAmount.getText().toString()), userID, dayID, youtubeVideo.getText().toString());
             if (exercise_edit == null) {
                 if (edit_name.length() <= 0) {
                     edit_name.setError("Name must be at least 1 character");
