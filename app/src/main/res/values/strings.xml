@@ -17,6 +17,7 @@
     <string name="cnfrmPassword">Confirm password</string>
     <string name="create_account">Create account</string>
     <string name="workouts">Workouts</string>
+    <string name="pedometer">Pedometer</string>
     <string name="logout">Logout</string>
     <string name="faq">FAQ</string>
     <string name="settings">Settings</string>

@@ -23,6 +23,23 @@
         app:layout_constraintTop_toBottomOf="@+id/view2"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/pedometer_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="onPedometerClick"
+        android:text="@string/pedometer"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facebook_button"
+        app:layout_constraintVertical_bias="1.0" />
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
@@ -93,12 +110,12 @@
     <ImageButton
         android:id="@+id/facebook_button"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="130dp"
-        android:layout_height="125dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
         android:labelFor="@id/facebook_button"
         android:onClick="onFBClick"
-        android:src="@drawable/facebook"
+        android:src="@drawable/images"
         android:text="@string/logout"
         android:textAllCaps="false"
         android:textColor="@color/black"
