@@ -16,15 +16,8 @@
         <activity android:name=".Exercises.CreateOrEditExerciseActivity"
             android:exported="true"/>
         <activity
-            android:name=".RegisterActivity"
-            android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
-            android:exported="true" />
-        <activity
             android:name=".NavigationActivity"
             android:theme="@style/Theme.WorkoutPlaner.NoActionBar"
-            android:exported="true" />
-        <activity
-            android:name=".ForgotPasswordActivity"
             android:exported="true" />
         <activity
             android:name=".OfflineActivity"
