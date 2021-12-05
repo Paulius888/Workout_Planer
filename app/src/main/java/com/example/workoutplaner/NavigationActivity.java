@@ -63,17 +63,18 @@ public class NavigationActivity extends AppCompatActivity {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/?lang=en"));
         startActivity(browserIntent);
     }
-    public void onPedometerClick(View view) {
-
-        Intent intent = new Intent(this, MainActivity.class);
-        this.startActivity(intent);
-
-    }
 
     public void onLogoutClick(View view) {
         FirebaseAuth.getInstance().signOut();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+        if (user == null)
+        {
+            Log.i("loged", "loged out");
+        }
+        else
+        {
+            Log.i("loged ", "still loged ");
+        }
         finishAffinity();
 
         Intent login = new Intent(this, OfflineActivity.class);

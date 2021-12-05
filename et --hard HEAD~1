@@ -1,0 +1,29 @@
+[33m015ccf1[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: checkout: moving from master to master
+[33m015ccf1[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{1}: pull: Fast-forward
+[33m0f0efe0[m HEAD@{2}: checkout: moving from shake_sensor to master
+[33m907e589[m[33m ([m[1;32mshake_sensor[m[33m)[m HEAD@{3}: commit: Upadate Android Manifest
+[33ma91af3f[m HEAD@{4}: commit: Deleted unuseful code
+[33md5a7ae8[m HEAD@{5}: commit: Shake sensor
+[33mb3b0a9f[m HEAD@{6}: commit: Implemented pedometer
+[33mb195387[m HEAD@{7}: commit: Shake sensor
+[33m1481a35[m HEAD@{8}: commit: Shake sensor
+[33me2644b2[m HEAD@{9}: checkout: moving from youtube to shake_sensor
+[33m07450db[m[33m ([m[1;31morigin/youtube[m[33m, [m[1;32myoutube[m[33m)[m HEAD@{10}: reset: moving to HEAD
+[33m07450db[m[33m ([m[1;31morigin/youtube[m[33m, [m[1;32myoutube[m[33m)[m HEAD@{11}: pull: Fast-forward
+[33mf74c9d3[m HEAD@{12}: checkout: moving from youtube to youtube
+[33mf74c9d3[m HEAD@{13}: checkout: moving from master to youtube
+[33m6eb0dca[m HEAD@{14}: reset: moving to HEAD
+[33m6eb0dca[m HEAD@{15}: checkout: moving from master to master
+[33m6eb0dca[m HEAD@{16}: pull: Fast-forward
+[33mc926b0d[m HEAD@{17}: checkout: moving from animations to master
+[33m0656c41[m[33m ([m[1;32manimations[m[33m)[m HEAD@{18}: rebase (finish): returning to refs/heads/animations
+[33m0656c41[m[33m ([m[1;32manimations[m[33m)[m HEAD@{19}: rebase (pick): added animations
+[33me0d0517[m HEAD@{20}: rebase (pick): added transition animations
+[33mc926b0d[m HEAD@{21}: rebase (start): checkout master
+[33m155b23b[m HEAD@{22}: checkout: moving from master to animations
+[33mc926b0d[m HEAD@{23}: pull: Fast-forward
+[33m66d4560[m HEAD@{24}: checkout: moving from animations to master
+[33m155b23b[m HEAD@{25}: commit: added animations
+[33m1e3b4d5[m HEAD@{26}: commit: added transition animations
+[33m57a0e6f[m HEAD@{27}: checkout: moving from master to animations
+[33m66d4560[m HEAD@{28}: clone: from https://github.com/Paulius888/Workout_Planer.git
