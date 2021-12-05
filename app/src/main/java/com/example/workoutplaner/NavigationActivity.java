@@ -41,6 +41,11 @@ public class NavigationActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    public void onProfileClick(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        this.startActivity(intent);
+    }
+
     public void onFBClick(View view) {
 
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/groups/1277550729425565"));
