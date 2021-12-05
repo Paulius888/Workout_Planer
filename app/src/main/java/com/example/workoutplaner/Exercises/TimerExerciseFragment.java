@@ -1,6 +1,5 @@
 package com.example.workoutplaner.Exercises;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -11,18 +10,12 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.SystemClock;
-import android.os.Vibrator;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Chronometer;
-import android.widget.Toast;
 
-import com.example.workoutplaner.ShakeListener;
-import com.example.workoutplaner.Workouts.ShakeDetector;
 import com.example.workoutplaner.R;
-import com.example.workoutplaner.Workouts.ShakeDetector;
 
 import java.util.Objects;
 
