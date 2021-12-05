@@ -7,6 +7,22 @@
     tools:context=".NavigationActivity">
 
     <Button
+        android:id="@+id/pedometer_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="208dp"
+        android:onClick="onPedometerClick"
+        android:text="@string/pedometer"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/workouts_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/workouts_button"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="0dp"

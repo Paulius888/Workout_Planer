@@ -40,6 +40,10 @@ public class NavigationActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WorkoutActivity.class);
         this.startActivity(intent);
     }
+    public void onPedometerClick(View view) {
+        Intent intent = new Intent(this, PedometerActivity.class);
+        this.startActivity(intent);
+    }
 
     public void onProfileClick(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);

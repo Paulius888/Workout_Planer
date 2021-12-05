@@ -16,6 +16,10 @@
             android:exported="true"
             android:label="@string/title_activity_profile" />
         <activity
+            android:name=".PedometerActivity"
+            android:exported="true"
+            android:label="Pedometer" />
+        <activity
             android:name=".Exercises.ExercisesActivity"
             android:exported="true" />
         <activity
