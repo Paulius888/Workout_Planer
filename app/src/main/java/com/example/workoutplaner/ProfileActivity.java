@@ -53,7 +53,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
+        //userID = user.getUid();
+        userID = "35DokOMtLkeAayj9mDcECXXY3oY2";
 
         final TextView emailAddress = (TextView) findViewById(R.id.emailAddress);
         final TextView username = (TextView) findViewById(R.id.username);
